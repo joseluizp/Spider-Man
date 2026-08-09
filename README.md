@@ -1,3 +1,11 @@
+# Spider-Man
+
+## Preview
+
+![Preview 01](./assets/Preview01.png)
+
+![Preview 02](./assets/Preview02.png)
+
 Sobre o Projeto
 
 O objetivo foi transformar um layout criado no Figma em uma página web completa — estruturada, estilizada e animada do zero.
@@ -26,7 +34,7 @@ GSAP (ScrollTrigger, ScrollSmoother, SplitText)	Animações sincronizadas com sc
 Figma	Prototipagem e referência do layout
 
 
-📁 Estrutura de Pastas
+   *Estrutura de Pastas*
 Spider-Man/
 ├── assets/
 │   ├── frames/         # Sequência de imagens
@@ -36,7 +44,7 @@ Spider-Man/
 ├── style.css
 └── main.js
 
-🚀 Como Rodar Localmente
+  *Como Rodar Localmente*
 bash
 # Clone o repositório
 git clone https://github.com/joseluizp/Spider-Man.git
@@ -47,7 +55,7 @@ cd Spider-Man
 # Abra o index.html com Live Server (VS Code)
 # Clique com o botão direito em index.html → Open with Live Server
 
-⚠️ A sequência de frames é carregada via requisições locais. Use um servidor local (como o Live Server do VS Code) para evitar erros de CORS.
+ A sequência de frames é carregada via requisições locais. Use um servidor local (como o Live Server do VS Code) para evitar erros de CORS.
 
 Aprendizados
 
@@ -60,10 +68,4 @@ Tomar decisões de UX e : identificar o que estava quebrado na referência e pro
 
 Desenvolvido por José Luiz · Curso DevArt
 
-# Spider-Man
 
-## Preview
-
-![Preview 01](./assets/Preview01.png)
-
-![Preview 02](./assets/Preview02.png)
