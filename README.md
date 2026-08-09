@@ -55,7 +55,6 @@ cd Spider-Man
 # Abra o index.html com Live Server (VS Code)
 # Clique com o botão direito em index.html → Open with Live Server
 
- A sequência de frames é carregada via requisições locais. Use um servidor local (como o Live Server do VS Code) para evitar erros de CORS.
 
 Aprendizados
 
