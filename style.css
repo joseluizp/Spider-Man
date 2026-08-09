@@ -3,9 +3,6 @@
 
    Toda medida é escrita em unidades de design (px do Figma) multiplicadas
    por --u, que vale 1px quando a página tem 1920px de largura.
-
-   As seções ocupam 100% da altura da tela; por isso as posições verticais
-   são ancoradas (topo / base / centro) em vez de usarem um "top" fixo.
    ========================================================================== */
 
 @font-face {

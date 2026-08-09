@@ -1,28 +1,5 @@
-/* ==========================================================================
-   Animações de rolagem com GSAP.
-
-   - ScrollSmoother  → rolagem suave da página inteira
-   - ScrollTrigger   → a Hero fica pinnada enquanto a animação acontece
-   - SplitText       → troca de sinopse letra a letra, em ordem aleatória
-
-   A Hero fica pinnada durante dois atos, os dois na MESMA timeline:
-
-     ATO 1 → a sequência de frames roda no .stage enquanto as três sinopses
-             se trocam letra a letra. As duas animações ocupam o ato inteiro,
-             de 0 a ACT_1, então têm exatamente o mesmo início e o mesmo fim.
-
-     ATO 2 → uma máscara preta abre do centro e revela o trailer, empurrando
-             o logo para a esquerda e a sinopse para a direita.
-   ========================================================================== */
-
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
-/* ==========================================================================
-   0 — CORREÇÃO: define --frame-h imediatamente para evitar zoom no reload.
-   O reveal__frame usa height: var(--frame-h, 60vh); se a variável não
-   existir antes do primeiro paint, o navegador usa 60vh e depois corrige,
-   criando o efeito de zoom. Definir aqui, de forma síncrona, elimina o salto.
-   ========================================================================== */
 (function setFrameHeightEarly() {
   var revealEl = document.querySelector('.reveal');
   if (revealEl) {
@@ -98,25 +75,6 @@ function render() {
   if (frac > 0.001 && i < LAST_FRAME) drawCover(frames[i + 1], frac);
 }
 
-/* --------------------------------------------------------------------------
-   POR QUE O ZOOM ACONTECIA (causa raiz real):
-   canvas.getBoundingClientRect() é chamado antes do browser garantir que o
-   layout do .stage terminou de calcular (o .stage depende de --u, que vem
-   de um container query no <body>, e isso pode resolver DEPOIS do primeiro
-   script rodar, especialmente em reload). O rect vinha com um tamanho errado
-   (geralmente menor/com proporção diferente), o que fazia drawCover calcular
-   um "scale" grande demais e mostrar só um pedaço ampliado da imagem.
-
-   ESTRATÉGIA (com rede de segurança tripla, para nunca ficar em branco):
-   1) Chamada imediata via requestAnimationFrame (2x) — na prática já resolve
-      o zoom, porque dá tempo do layout estabilizar antes de medir.
-   2) ResizeObserver — corrige automaticamente se o tamanho mudar depois
-      (resize de janela, mudança de layout etc.), sem precisar de cálculo manual.
-   3) Timeout de segurança — se por algum motivo nada tiver revelado o canvas
-      em 1.5s (ex.: navegador não dispara o ResizeObserver como esperado),
-      força a revelação de qualquer forma. Prefere um possível zoom raro a
-      deixar a imagem sumida para sempre, que é pior.
-   -------------------------------------------------------------------------- */
 let canvasReady = false;
 
 function resizeCanvas(entryRect) {
